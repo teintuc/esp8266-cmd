@@ -1,0 +1,12 @@
+#!/usr/bin/python
+
+import sys
+
+import espcmd.Cli
+
+def main():
+    return espcmd.Cli.main()
+
+if __name__ == "__main__":
+    sys.exit(main())
+
