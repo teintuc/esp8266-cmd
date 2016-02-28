@@ -9,8 +9,8 @@ def enum(**enums):
 Status = enum(ERR='ERROR', OK=['OK', 'ready', 'no change'], BUSY='busy')
 
 class com:
-    def __init__(self, port):
-        self.__ser = serial.Serial(port, 115200)
+    def __init__(self, port, baudrate):
+        self.__ser = serial.Serial(port, baudrate)
 
     def close(self):
         if self.__ser.isOpen():
