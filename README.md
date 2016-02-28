@@ -27,11 +27,14 @@ Create a file containing those lines:
 
 Once the file save, you just have to run:
 	
-	espcmd commandfile
+	esp-cmd /dev/ttyUSB0 commandfile/testAtCommand
+
+You can also give a baudrate:
+	
+	esp-cmd -b 115200 /dev/ttyUSB0 commandfile/testAtCommand
 
 #### Things to be done
 
-- Add the possibility to give in parameters the port and baudrate
 - Give the possibility to send a command directly from the command line, not only from a file
 - Make a better error handling. Right now, if it somethings goes wrong, it will crash yeak!
 - Has error handling, do something if one of the AT command return an ```ERROR```
