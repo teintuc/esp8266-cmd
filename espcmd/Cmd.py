@@ -8,6 +8,10 @@ import espcmd.Com
 class cmd:
     __at = "AT"
 
+    def __init__(self, port, baudrate):
+        self.__port = port
+        self.__baudrate = baudrate
+
     def __getCommand(self):
         # Get the commands from the given file
         fd = open(self.__commandFile, 'r')
@@ -24,7 +28,8 @@ class cmd:
         return cleanCommand
 
     def __runCommandEsp(self, espCommands):
-        comRsc = espcmd.Com.com('/dev/ttyUSB0')
+        comRsc = espcmd.Com.com(self.__port, self.__baudrate)
+        print("Running command on port " + self.__port + " baudrate " + self.__baudrate)
         for command in espCommands:
             comRsc.sendCommand(command)
         comRsc.close()
