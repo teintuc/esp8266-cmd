@@ -29,7 +29,8 @@ class cmd:
 
     def __runCommandEsp(self, espCommands):
         comRsc = espcmd.Com.com(self.__port, self.__baudrate)
-        print("Running command on port " + self.__port + " baudrate " + self.__baudrate)
+        print("Running commands on port " + self.__port + " baudrate " + self.__baudrate)
+        print("")
         for command in espCommands:
             comRsc.sendCommand(command)
         comRsc.close()
