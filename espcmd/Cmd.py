@@ -12,7 +12,7 @@ class cmd:
         self.__port = port
         self.__baudrate = baudrate
 
-    def __getCommand(self):
+    def __getCommandFromFile(self):
         # Get the commands from the given file
         fd = open(self.__commandFile, 'r')
         rawCommands = fd.readlines()
@@ -40,6 +40,6 @@ class cmd:
             return "File doesn't exists"
         
         self.__commandFile = filename
-        commands = self.__getCommand()
+        commands = self.__getCommandFromFile()
 
         self.__runCommandEsp(commands)
