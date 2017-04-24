@@ -8,9 +8,12 @@ import espcmd.Com
 class cmd:
     __at = "AT"
 
-    def __init__(self, port, baudrate):
+    __verbose = False
+
+    def __init__(self, port, baudrate, verbose):
         self.__port = port
         self.__baudrate = baudrate
+        self.__verbose = verbose
 
     def __getCommandFromFile(self):
         # Get the commands from the given file
@@ -29,8 +32,9 @@ class cmd:
 
     def __runCommandEsp(self, espCommands):
         comRsc = espcmd.Com.com(self.__port, self.__baudrate)
-        print("Running commands on port " + self.__port + " baudrate " + self.__baudrate)
-        print("")
+        if self.__verbose == True:
+            print("Running commands on port " + self.__port + " baudrate " + self.__baudrate)
+            print("")
         for command in espCommands:
             comRsc.sendCommand(command)
         comRsc.close()
@@ -38,7 +42,7 @@ class cmd:
     def runFile(self, filename):
         if os.path.exists(filename) == False:
             return "File doesn't exists"
-        
+
         self.__commandFile = filename
         commands = self.__getCommandFromFile()
 
