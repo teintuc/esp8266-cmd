@@ -17,7 +17,7 @@ class com:
             self.__ser.close()
 
     def sendCommand(self, command):
-        print("Sending: " + command)
+        print("> " + command)
         self.__ser.flushInput()
         self.__ser.write(command + "\r\n")
         self.__ser.readline()
@@ -25,7 +25,7 @@ class com:
             while self.__ser.inWaiting():
                 ret = self.__ser.readline().strip("\r\n")
                 if len(ret) > 0:
-                    print(ret)
+                    print("< " + ret)
                     if ret == Status.ERR or ret in Status.OK:
                         return None
             sleep(0.5)
